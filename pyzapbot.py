@@ -30,7 +30,8 @@ class WhatsappBot:
                         sleep(10)
                         options = webdriver.ChromeOptions()
                         options.add_argument("lang=pt-br")
-                        #
+                        # On Google Chrome Type - chrome://version/ - So you can have the Profile path to save the browser configurations
+                        # You must change the final folder to store the exclusive settings for the program. In this case i create \\pybot after user data.
                         options.add_argument("user-data-dir=C:\\Users\\niger\\AppData\\Local\\Google\\Chrome\\User Data\\pybot")
                         #chromedriver.exe version 77....
                         self.driver = webdriver.Chrome(executable_path=r'./chromedriver.exe', options=options)
