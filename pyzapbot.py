@@ -27,12 +27,13 @@ class WhatsappBot:
                     print("Wait a moment...")
 
                     if not hasattr(self, "driver"):
-                        sleep(10)
+                        sleep(2)
                         options = webdriver.ChromeOptions()
                         options.add_argument("lang=pt-br")
                         # On Google Chrome Type - chrome://version/ - So you can have the Profile path to save the browser configurations
                         # You must change the final folder to store the exclusive settings for the program. In this case i create \\pybot after user data.
-                        options.add_argument("user-data-dir=C:\\Users\\niger\\AppData\\Local\\Google\\Chrome\\User Data\\pybot")
+                        # options.add_argument("user-data-dir=C:\\Users\\niger\\AppData\\Local\\Google\\Chrome\\User Data\\pybot")
+                        options.add_argument("user-data-dir=C:./browser")
                         #chromedriver.exe version 77....
                         self.driver = webdriver.Chrome(executable_path=r'./chromedriver.exe', options=options)
                         self.driver.get('https://web.whatsapp.com')
@@ -61,14 +62,20 @@ class WhatsappBot:
 
                 elif quest in "Nn":
                     print("Finalizando...")
+                    sleep(2)
                     if hasattr(self, "driver"):
                         self.driver.close()
+                        os.system("cls") or None
+                    else:
+                        os.system("cls") or None
+
                     break
 
             else:
                 print("Answer Y or N !")
-
+                sleep(3)
+                os.system("cls") or None
 
 bot = WhatsappBot()
 bot.SendMessages()
-os.system("cls") or None
+
