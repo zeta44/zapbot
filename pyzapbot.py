@@ -61,10 +61,11 @@ class WhatsappBot:
                         continue
 
                 elif quest in "Nn":
-                    print("Finalizando...")
+                    print("Ending the program. Please wait...")
                     sleep(2)
                     if hasattr(self, "driver"):
                         self.driver.close()
+                        self.driver.quit()
                         os.system("cls") or None
                     else:
                         os.system("cls") or None
