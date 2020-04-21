@@ -16,7 +16,11 @@ class WhatsappBot:
             print("*=" * 12)
             print("   Whatsapp Automatic")
             print("*=" * 12)
-            quest = str(input("Do you want to send a message? [Y - N]: "))
+            if not hasattr(self, "driver"):
+                p = "a"
+            else:
+                p = "another"
+            quest = str(input(f"Do you want to send {p} message? [Y - N]: "))
             os.system("cls") or None
             if quest in "YyNn":
                 if quest in "Yy":
