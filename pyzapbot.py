@@ -1,79 +1,48 @@
-from selenium import webdriver
+import logging as log
 from time import sleep
+from services import contact_service
+from services import message_service
 import os
+from page import options_mp
 
 
 class WhatsappBot:
     def __init__(self):
-        # Part 1 - The message you want to send
-        self.message = []
+        log.basicConfig(level=log.INFO, format='%(asctime)s %(message)s')
+        options_mp()
         # Part 2 - Name of the groups or people you want to send the message to
-        self.groups_or_people = ["Family Group", "Work Group"]
+        self.groups_or_people = contact_service.get_contacts()
 
+    # controller, should only handle input and validation messages
     def SendMessages(self):
         while True:
-            os.system("cls") or None
-            print("*=" * 12)
-            print("   Whatsapp Automatic")
-            print("*=" * 12)
-            if not hasattr(self, "driver"):
+            if not message_service.is_driver_running():
                 p = "a"
             else:
                 p = "another"
+            print(f"Chosen groups or people: {self.groups_or_people}")
             quest = str(input(f"Do you want to send {p} message? [Y - N]: "))
             os.system("cls") or None
             if quest in "YyNn":
                 if quest in "Yy":
                     print("*=" * 12)
-                    print("   Whatsapp Messager")
+                    print("   Whatsapp Messenger")
                     print("*=" * 12)
-                    text = str(input("Type your message: "))
-                    print("Wait a moment...")
+                    message = [str(input("Type your message: "))]
+                    message_service.init_driver()
 
-                    if not hasattr(self, "driver"):
-                        sleep(2)
-                        options = webdriver.ChromeOptions()
-                        options.add_argument("lang=pt-br")
-                        # On Google Chrome Type - chrome://version/ - So you can have the Profile path to save the browser configurations
-                        # You must change the final folder to store the exclusive settings for the program. In this case i create \\pybot after user data.
-                        # options.add_argument("user-data-dir=C:\\Users\\niger\\AppData\\Local\\Google\\Chrome\\User Data\\pybot")
-                        options.add_argument("user-data-dir=C:./browser")
-                        #chromedriver.exe version 77....
-                        self.driver = webdriver.Chrome(executable_path=r'./chromedriver.exe', options=options)
-                        self.driver.get('https://web.whatsapp.com')
-                    self.message.append(text)
-                    sleep(20)
-                    if len(self.message) > 0:
-                        for group_or_person in self.groups_or_people:
-                            group_field = self.driver.find_element_by_xpath(
-                                f"//span[@title='{group_or_person}']")
-                            sleep(1)
-                            group_field.click()
-                            chat_box = self.driver.find_element_by_class_name("_1Plpp")
-                            sleep(1)
-                            chat_box.click()
-                            chat_box.send_keys(self.message)
-                            send_button = self.driver.find_element_by_xpath("//span[@data-icon='send']")
-                            sleep(1)
-                            send_button.click()
-                            sleep(1)
-                        self.message.clear()
-                        print("Messages sent!")
-                        sleep(3)
+                    if len(message) > 0:
+                        message_service.send_message(self.groups_or_people, message)
                         continue
                     else:
+                        log.warning('Invalid message')
                         continue
 
                 elif quest in "Nn":
                     print("Ending the program. Please wait...")
                     sleep(2)
-                    if hasattr(self, "driver"):
-                        self.driver.close()
-                        self.driver.quit()
-                        os.system("cls") or None
-                    else:
-                        os.system("cls") or None
-
+                    message_service.dispose()
+                    os.system("cls") or None
                     break
 
             else:
@@ -81,6 +50,6 @@ class WhatsappBot:
                 sleep(3)
                 os.system("cls") or None
 
+
 bot = WhatsappBot()
 bot.SendMessages()
-

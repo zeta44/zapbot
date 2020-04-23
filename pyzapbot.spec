@@ -3,8 +3,8 @@
 block_cipher = None
 
 
-a = Analysis(['PyZapBot.py'],
-             pathex=['C:\\Users\\niger\\PycharmProjects\\zapbot'],
+a = Analysis(['pyzapbot.py'],
+             pathex=['C:\\Users\\niger\\PycharmProjects\\pyzapbot'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -21,7 +21,7 @@ exe = EXE(pyz,
           a.scripts,
           [],
           exclude_binaries=True,
-          name='PyZapBot',
+          name='pyzapbot',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
@@ -34,4 +34,4 @@ coll = COLLECT(exe,
                strip=False,
                upx=True,
                upx_exclude=[],
-               name='PyZapBot')
+               name='pyzapbot')

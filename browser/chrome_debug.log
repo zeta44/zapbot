@@ -1,3 +1,0 @@
-[10112:10160:0418/162339.928:INFO:CONSOLE(1)] "Application Cache API use is deprecated and will be removed in M82, around April 2020. See https://www.chromestatus.com/features/6192449487634432 for more details.", source: https://web.whatsapp.com/app.ca7f73985b45fbf63033.js (1)
-[10112:10160:0418/162432.106:WARNING:pref_notifier_impl.cc(40)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
-[10112:10160:0418/162432.107:WARNING:pref_notifier_impl.cc(40)] Pref observer for browser.relaunch_notification_period found at shutdown.
