@@ -1,3 +1,5 @@
+# TODO: Convert this file into a class and move it into the __init__.py
+
 # Service that handles messages
 from time import sleep
 from selenium import webdriver

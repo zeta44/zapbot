@@ -1,3 +1,4 @@
+# TODO: Convert this file into a class and move it into the __init__.py
 # Service that handles contacts
 import logging as log
 
