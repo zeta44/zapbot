@@ -1,0 +1,12 @@
+2020/04/24-18:42:17.220 1274 Reusing MANIFEST C:\Users\niger\PycharmProjects\pyzapbot\browser\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/04/24-18:42:17.221 1274 Recovering log #12
+2020/04/24-18:42:17.320 1274 Reusing old log C:\Users\niger\PycharmProjects\pyzapbot\browser\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000012.log 
+2020/04/24-18:42:29.588 17b0 Level-0 table #18: started
+2020/04/24-18:42:29.622 17b0 Level-0 table #18: 1275219 bytes OK
+2020/04/24-18:42:29.625 17b0 Delete type=0 #12
+2020/04/24-18:42:30.286 17b0 Compacting 1@1 + 1@2 files
+2020/04/24-18:42:30.334 17b0 Generated table #19@1: 35128 keys, 1428889 bytes
+2020/04/24-18:42:30.334 17b0 Compacted 1@1 + 1@2 files => 1428889 bytes
+2020/04/24-18:42:30.337 17b0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/04/24-18:42:30.337 17b0 Delete type=2 #15
+2020/04/24-18:42:30.337 17b0 Delete type=2 #18
