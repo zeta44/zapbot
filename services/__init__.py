@@ -1,8 +1,8 @@
-import logging as log
 from selenium import webdriver
 import logging as log
 import os
 from time import sleep
+
 
 
 class ContactService:
@@ -69,7 +69,7 @@ class MessageService:
             # On Google Chrome Type - chrome://version/ - So you can have the Profile path to save the browser configurations
             # You must change the final folder to store the exclusive settings for the program. In this case i create \\pybot after user data.
             # options.add_argument("user-data-dir=C:\\Users\\niger\\AppData\\Local\\Google\\Chrome\\User Data\\pybot")
-            options.add_argument("user-data-dir=C:./browser")
+            options.add_argument("user-data-dir=./browser")
             options.add_argument("utf8")
             # chromedriver.exe version 77....
             self.driver = webdriver.Chrome(executable_path=r'./chromedriver.exe', options=options)
@@ -92,6 +92,15 @@ class MessageService:
         groups = ContactService.get_contacts(self)
         for group_or_person in groups:
             log.info(f'Sending message {message} to group {group_or_person}')
+            search_button = self.driver.find_element_by_xpath("//span[@data-icon='chat']")
+            sleep(1)
+            search_button.click()
+            sleep(1)
+            search_box = self.driver.switch_to.active_element
+            sleep(1)
+            search_box.send_keys(group_or_person)
+            search_box.click()
+            sleep(1)
             group_field = self.driver.find_element_by_xpath(f"//span[@title='{group_or_person}']")
             sleep(1)
             group_field.click()
